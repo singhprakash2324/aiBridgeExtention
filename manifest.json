@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "AI Bridge",
+  "version": "1.0",
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["content/chatgpt.js"]
+    },
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["content/claude.js"]
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content/gemini.js"]
+    }
+  ]
+}
